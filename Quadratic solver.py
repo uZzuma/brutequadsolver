@@ -1,6 +1,6 @@
 from decimal import Decimal, getcontext
 
-getcontext().prec = 10000000  # Set decimal precision
+getcontext().prec = 10  # Set decimal precision
 
 import time
 start_time = time.time()
@@ -49,11 +49,11 @@ while True:
         b=b*-1
         newb=b
     
-    fac1=fac1+Decimal('0.0000001')  #set decimal precision 
+    fac1=fac1+Decimal('0.1')  #set decimal precision 
     #iterate fac1 always unless further statements are fulfilled
     #print(limit,basfac1,fac1,fac2)
     if fac1>limit and fac1+fac2!=b: #stops the code from going needlessly infinitely
-        fac2=fac2+Decimal('0.0000001')   #set decimal precison
+        fac2=fac2+Decimal('0.1')   #set decimal precison
         fac1=basfac1
     if count==stop and fac1*fac2!=newc and fac1+fac2!=b:
         print("there is no possible solution with whole numbers. Please try again.")
