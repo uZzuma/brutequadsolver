@@ -1,10 +1,10 @@
 from decimal import Decimal, getcontext
 
-getcontext().prec = 10  # Set decimal precision
+getcontext().prec = 100  # Set decimal precision
 
 import time
 start_time = time.time()
-timeout=30
+#timeout=30
 equation = "ax^2+bx+c"
 print("this is the standard equation: ",equation)
 a= Decimal(input("please enter the 'a' in your equation: "))
@@ -44,29 +44,29 @@ while True:
     #if time.time()-start_time > timeout:              #temporary fix to make a stopping point
         print("there is no possible solution with whole numbers in 30s. Please try again.")
         break
-    count=count+1
+    #count=count+1
     if a==1 and c==0 and b<0:
         b=b*-1
         newb=b
     
     fac1=fac1+Decimal('0.1')  #set decimal precision 
     #iterate fac1 always unless further statements are fulfilled
-    #print(limit,basfac1,fac1,fac2)
+    print(limit,basfac1,fac1,fac2)
     if fac1>limit and fac1+fac2!=b: #stops the code from going needlessly infinitely
         fac2=fac2+Decimal('0.1')   #set decimal precison
         fac1=basfac1
     if count==stop and fac1*fac2!=newc and fac1+fac2!=b:
         print("there is no possible solution with whole numbers. Please try again.")
-        #print(count)
+        print(count)
         break
     
-    if fac1==limit:
+    if fac2==limit:
         print("There are no possible values for this equation")
         break       
     
     
     
-    if fac1*fac2==newc and fac1+fac2==b:
+    if round(fac1 * fac2, 5) == round(newc, 5) and fac1+fac2==b:
         if a==1:
             fac1=fac1*-1
             fac2=fac2*-1
